@@ -10,6 +10,7 @@ usage() {
      -h   Show this message
      -i   Docker images to mirror: "library/ubuntu library/redis"
      -r   Docker registry to mirror: "example.com"
+     -t   Docker image tag (fetch only this tag)
 EOF
 }
 
@@ -20,8 +21,9 @@ type docker >/dev/null 2>&1 || {
 
 IMAGES=
 REGISTRY=
+TAG=
 
-while getopts "h:r:i:" OPTION
+while getopts "h:r:i:t:" OPTION
 do
   case $OPTION in
     h)
@@ -30,6 +32,9 @@ do
       ;;
     r)
       REGISTRY=$OPTARG
+      ;;
+    t)
+      TAG=$OPTARG
       ;;
     i)
       IMAGES=$OPTARG
@@ -47,13 +52,17 @@ if [[ -z $REGISTRY ]] || [[ -z $IMAGES ]]; then
 fi
 
 for IMAGE in $IMAGES; do
-  docker pull -a $IMAGE
+  if ! [[ -z $TAG ]]; then
+    docker pull $IMAGE:$TAG
+  else
+    docker pull -a $IMAGE
+  fi
 
-  TAGS=$(docker images|grep -G "^${IMAGE}[[:blank:]]"|awk '{print $2}'|sort|uniq)
+  TRUNCIMAGE=$(echo $IMAGE|sed 's/library\///')
+  TAGS=$(docker images|grep -G "^${TRUNCIMAGE}[[:blank:]]"|awk '{print $2}'|sort|uniq)
 
   for TAG in $TAGS; do
     docker tag -f $IMAGE:$TAG $REGISTRY/$IMAGE:$TAG
+    docker push $REGISTRY/$IMAGE:$TAG
   done
-
-  docker push $REGISTRY/$IMAGE
 done
