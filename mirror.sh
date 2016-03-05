@@ -62,7 +62,7 @@ for IMAGE in $IMAGES; do
   TAGS=$(docker images|grep -G "^${TRUNCIMAGE}[[:blank:]]"|awk '{print $2}'|sort|uniq)
 
   for TAG in $TAGS; do
-    docker tag -f $IMAGE:$TAG $REGISTRY/$IMAGE:$TAG
+    docker tag $IMAGE:$TAG $REGISTRY/$IMAGE:$TAG
     docker push $REGISTRY/$IMAGE:$TAG
   done
 done
