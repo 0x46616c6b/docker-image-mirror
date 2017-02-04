@@ -8,6 +8,7 @@ script:
 before_deploy:
   - gem install fpm
   - make prepare deb
+  - ls -lh build/
 
 deploy:
   provider: releases
