@@ -13,6 +13,11 @@ You can easily install the Script with `make`
     make install
     docker-image-mirror -h
 
+### Ubuntu/Debian
+
+    wget https://github.com/0x46616c6b/docker-image-mirror/releases/download/1.0.0/docker-image-mirror_amd64.deb
+    sudo dpkg -i docker-image-mirror_amd64.deb
+
 ## Usage
 
     # mirror multiple images
