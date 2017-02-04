@@ -4,7 +4,7 @@ usage() {
   cat <<EOF
   usage: $0 -r <registry_host> -i <images>
 
-  docker-image-moirror copy docker images to your private docker registry.
+  docker-image-mirror copy docker images to your private docker registry.
 
   OPTIONS:
      -h   Show this message
