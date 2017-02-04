@@ -8,9 +8,9 @@ script:
 before_deploy:
   - gem install fpm
   - make prepare deb
-  - ls -lh build/
 
 deploy:
+  skip_cleanup: true
   provider: releases
   api_key:
     secure: BiugO1+xsjjawcR7OReDMpJnSc0tVBEj+uT6VNM/n0ea+KWnXOpHCOLjgs16uqQHbLhhj+f58Cfvin3IQDnO4z5Lb1+MGrkOkYUjPa3BToNCnzhg94onjve/hzMYuALCWRHRAlBrrqzvfryE1fJDBG3GLGLGcN+epMYeVHF13dbtjdOB8y8oGeT/QxQnpuidnb2mhypZGCqhQ3BNLnPa+fU5NGGe+mjr2Jf/YdcUPG5se32LkZJ3jpujtUA3PKw/agdaJU8VeYUIR0gw1xo1mG1dGZAtaULOXW/FKa/rhxZ+uDDxyf9Coa9F4xQbSLtyPCjyxQmq9Q5JjB4MKsK67LR/wrkHf+MEJ2TItMTdtmyVZc9QydSa1bm9U3SFSRIeUikxbvhg4LvUtzarm8xfzdvqa4p2RjWSpO23hEnyN/xPOuWcYu82NrXe+UslezQvjw0RqDidfKl+r97l5NGjzGHrGdyafdasaTVLBZGPzLeS64KEcIn9iiZ24LUGE/M6S7k2hOyEn/ZMCX9jbWJM/KJfMg3Hk+JiKUnXRKXAdy8jRmwqdl7bD7x83wOZkOr99MqadRnfxi4NYXg/xLm4UizPXiiMPdfBBQSOZKZbSpJJ6zAlOPo3aRWCyBvu2AXue6YQzU6EnCyrMWCOqhGfB10OBnoSR59MFBZzPshDKl8=
