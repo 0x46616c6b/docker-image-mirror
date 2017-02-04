@@ -1,5 +1,7 @@
 # Docker Image Mirror
 
+[![Build Status](https://travis-ci.org/0x46616c6b/docker-image-mirror.svg?branch=master)](https://travis-ci.org/0x46616c6b/docker-image-mirror)
+
 simple bash script to copy often used docker images to our registry to prevent a single point of failure ;)
 
 ## Installation
