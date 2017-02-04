@@ -7,6 +7,10 @@ PREFIX       = /usr/local
 clean:
 	rm -R $(BUILD_DIR)/* || true
 
+.PHONY: prepare
+prepare:
+	mkdir -p build
+
 .PHONY: install
 install:
 	cp mirror.sh ${PREFIX}/bin/docker-image-mirror
