@@ -1,0 +1,6 @@
+language: bash
+dist: trusty
+sudo: required
+
+script:
+  - sudo make install
